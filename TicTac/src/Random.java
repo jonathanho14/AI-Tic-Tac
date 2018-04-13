@@ -1,8 +1,8 @@
 import java.util.List;
 
-public class AI extends Player{
+public class Random extends Player{
 	
-	public AI(int n){
+	public Random(int n){
 		name = n;
 	}
 

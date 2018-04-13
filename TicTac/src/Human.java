@@ -29,7 +29,6 @@ public class Human extends Player{
 				System.out.println("Enter position (0 - 8): ");
 				y = reader.nextInt();
 			}
-			reader.close();
 			
 			board.performMove(name, new Position((x % 3) * 3 + y % 3, x / 3 * 3 + y / 3));
 			
@@ -51,7 +50,7 @@ public class Human extends Player{
 				x = reader.nextInt();
 				temp = new Position((subBoard % 3) * 3 + x % 3, subBoard / 3 * 3 + x / 3);
 			}
-			reader.close();
+			
 			
 			board.performMove(name,  temp);
 			
