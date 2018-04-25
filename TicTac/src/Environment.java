@@ -109,15 +109,15 @@ public class Environment {
 		Environment e = new Environment();
 		
 		int[] result = new int[3];
-		Player p1 = new Random(1);
+		Player p1 = new Minimax(1,1);
 		Player p2 = new Minimax(2,1);
 		for(int i =0; i < 1000; i++){
 			if(i % 2 == 0){
-				e = new Environment();
+				e = new Environment(p1,p2);
 			}else{
-				e = new Environment();
+				e = new Environment(p2,p1);
 			}
-			int temp = e.play();
+			int temp = e.play(2);
 			result[temp] += 1;
 		}
 		

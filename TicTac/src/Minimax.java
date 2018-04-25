@@ -26,11 +26,12 @@ public class Minimax extends Player{
 		for(Position move: moves){
 			temp = new Board(board);
 			temp.performMove(name, move);
+			
 			List<Position> nextMoves = temp.getEmptyPositions(move.getX() % 3 + move.getY() % 3 * 3);
 			
 			if(nextMoves.size() == 0){
-				System.out.println("No possible moves 2");
-				return new Pair(board, -1);
+				max = Integer.MAX_VALUE;
+				bestMove = move;
 			}
 			
 			double min = Integer.MAX_VALUE;
@@ -46,6 +47,7 @@ public class Minimax extends Player{
 				max = min;
 			}
 			
+			
 		}
 		
 		System.out.println(H(board, bestMove));
@@ -53,9 +55,9 @@ public class Minimax extends Player{
 		board.performMove(name, bestMove);
 		
 
-		/*if(board.checkBox(bestMove.getX() % 3 + bestMove.getY() % 3 * 3) != -1){
+		if(board.checkBox(bestMove.getX() % 3 + bestMove.getY() % 3 * 3) != -1){
 			return new Pair(board, -1);
-		}*/
+		}
 		
 		
 		
