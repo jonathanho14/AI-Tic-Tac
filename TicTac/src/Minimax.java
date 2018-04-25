@@ -53,9 +53,9 @@ public class Minimax extends Player{
 		board.performMove(name, bestMove);
 		
 
-		if(board.checkBox(bestMove.getX() % 3 + bestMove.getY() % 3 * 3) != -1){
+		/*if(board.checkBox(bestMove.getX() % 3 + bestMove.getY() % 3 * 3) != -1){
 			return new Pair(board, -1);
-		}
+		}*/
 		
 		
 		

@@ -79,7 +79,7 @@ public class Board {
 		
 		for(int i = 0; i < 3; i++){
 			for(int j = 0; j < 3; j++){
-				if(board[3 * x + i][3 * x + j] == 0){
+				if(board[3 * x + i][3 * y + j] == 0){
 					return IN_PROGRESS;
 				}
 			}
