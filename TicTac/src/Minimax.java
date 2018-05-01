@@ -30,8 +30,10 @@ public class Minimax extends Player{
 			List<Position> nextMoves = temp.getEmptyPositions(move.getX() % 3 + move.getY() % 3 * 3);
 			
 			if(nextMoves.size() == 0){
-				max = Integer.MAX_VALUE;
-				bestMove = move;
+				if(H(board,move) > max){
+					bestMove = move;
+					max = H(board,move);
+				}
 			}
 			
 			double min = Integer.MAX_VALUE;
@@ -133,9 +135,12 @@ public class Minimax extends Player{
 		if(count > 0){
 			sum += 0.415509 * Math.exp(1.35173 * count / 8);
 		}
-
 		return sum;
 		
+	}
+	
+	public int subH(Board b, int subBoard){
+		return subH(b, new Position(subBoard % 3, subBoard / 3));
 	}
 	
 	private int subH(Board b, Position sub){

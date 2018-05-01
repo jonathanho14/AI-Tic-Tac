@@ -2,9 +2,9 @@
 public class Environment {
 	
 	private Board board;
-	private Player p1;
-	private Player p2;
-	private boolean turn;
+	public Player p1;
+	public Player p2;
+	public boolean turn;
 	private int subBoard;
 	
 	
@@ -29,6 +29,14 @@ public class Environment {
 		subBoard = -1;		
 		
 		
+	}
+	
+	public Environment(Board board){
+		this.board = new Board(board);
+		p1 = new Random(1);
+		p2 = new Random(2);
+		turn = true;
+		subBoard = -1;
 	}
 	
 	public Board getBoard(){
@@ -82,13 +90,13 @@ public class Environment {
 		Pair p;
 		while((temp = board.checkWin()) < 0){
 			if(turn){
-				//System.out.println(board.toString());
+				System.out.println(board.toString());
 				p = p1.move(board, subBoard);
 				board = p.board;
 				subBoard = p.y;
 				turn = false;
 			}else{
-				//System.out.println(board.toString());
+				System.out.println(board.toString());
 				p = p2.move(board, subBoard);
 				board = p.board;
 				subBoard = p.y;
@@ -97,27 +105,28 @@ public class Environment {
 		}
 		//System.out.println(board.toString());
 		if(temp == 0){
-			System.out.println("It's a tie");
+			//System.out.println("It's a tie");
 			return 0;
 		}else{
-			System.out.println("Player " + temp + " wins!");
+			//System.out.println("Player " + temp + " wins!");
 			return temp;
 		}
 	}
 	
+
 	public static void main(String[] args){
 		Environment e = new Environment();
 		
 		int[] result = new int[3];
-		Player p1 = new Minimax(1,1);
-		Player p2 = new Minimax(2,1);
-		for(int i =0; i < 1000; i++){
+		Player p1 = new Human(1);
+		Player p2 = new MonteCarlo(2,100);
+		for(int i =0; i < 500; i++){
 			if(i % 2 == 0){
 				e = new Environment(p1,p2);
 			}else{
 				e = new Environment(p2,p1);
 			}
-			int temp = e.play(2);
+			int temp = e.play();
 			result[temp] += 1;
 		}
 		
